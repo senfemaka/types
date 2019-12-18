@@ -18,7 +18,7 @@ class Test extends React.Component {
     }
 
     render() {
-        const { num, str } = store;
+        const { bool, num, str } = store;
         return (
             <React.Fragment>
                 <label>BackEnd --- </label><input onChange={this.handleOnchange} />
@@ -34,6 +34,12 @@ class Test extends React.Component {
                 <span>Money    --- {num.money()}</span><br/>
                 <span>NumView  --- {num ? num.view() : ''}</span><br/>
                 <span>strView  --- {str.view()}</span><br/>
+                <br/>
+                <br/>
+                <br/>
+                <span>Boolean value --- {bool.view()}</span><br/>
+                {bool.checkbox({onChange: () => bool.toggle()})}
+                {bool.radiobutton({onChange: () => bool.toggle()})}
             </React.Fragment>
         );
     }
