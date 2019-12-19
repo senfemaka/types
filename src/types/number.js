@@ -16,19 +16,6 @@ class number {
         }
     }
 
-    money() {
-        if (!this._value) {
-            return (
-                <span>Something wrong!!!</span>
-            );
-        }
-        const rub = this._value && this._value.toString().split('.')[0];
-        const Rub = rub ? `${rub} руб.` : '';
-        const kop = this._value && this._value.toString().split('.')[1] && this._value.toString().split('.')[1].slice(0, 2);
-        const Kop = kop ? `${kop} коп.` : '';
-        return <span>{`${Rub}  ${Kop}`}</span>
-    }
-
     view() {
         if (!this._value) {
             return (

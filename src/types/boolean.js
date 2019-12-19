@@ -28,8 +28,8 @@ class boolean {
         return <input type="radio" checked={this._value} {...props} />
     }
 
-    view() {
-        return <span>{this._value ? 'true' : 'false'}</span>
+    view(trueString, falseString) {
+        return <span>{this._value ? trueString : falseString}</span>
     }
 }
 

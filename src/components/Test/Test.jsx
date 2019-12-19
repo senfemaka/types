@@ -10,6 +10,7 @@ class Test extends React.Component {
     handleOnchange = e => {
         const currentValue = e.target.value;
         store.changeNum(currentValue);
+        store.changeMon(currentValue);
         store.changeStr(currentValue);
     }
 
@@ -18,7 +19,7 @@ class Test extends React.Component {
     }
 
     render() {
-        const { bool, num, str } = store;
+        const { bool, dat, mon, num, str } = store;
         return (
             <React.Fragment>
                 <label>BackEnd --- </label><input onChange={this.handleOnchange} />
@@ -30,16 +31,22 @@ class Test extends React.Component {
                 <br/>
                 <br/>
                 <span>numValue --- {num.value || 'Something wrong!!!'}</span><br/>
-                <span>strValue --- {str.value || 'Something wrong!!!'}</span><br/>
-                <span>Money    --- {num.money()}</span><br/>
+                <span>strValue --- {str.value || 'Something wrong!!!'}</span><br/><span>---------------------------------</span><br/><br/>
+                <span>$Money$    --- {mon.cash()}</span><br/><span>$Deposit$ --- {mon.deposit()}</span><br/><span>$Credit$ --- {mon.credit()}</span><br/><span>---------------------------------</span><br/><br/>
                 <span>NumView  --- {num ? num.view() : ''}</span><br/>
-                <span>strView  --- {str.view()}</span><br/>
+                <span>strView  --- {str.view()}</span><br/><span>---------------------------------</span><br/><br/>
+                <label>{`e-mail --- `}</label>{str.email({style: {backgroundColor: 'blue', color: 'white'}})}
+                <label>{`   password --- `}</label>{str.password()}
+                <br/><span>---------------------------------</span>
                 <br/>
                 <br/>
-                <br/>
-                <span>Boolean value --- {bool.view()}</span><br/>
+                <span>Boolean value --- {bool.view('Yep, sir', 'No, sir')}</span><br/>
                 {bool.checkbox({onChange: () => bool.toggle()})}
                 {bool.radiobutton({onChange: () => bool.toggle()})}
+                <br/><span>---------------------------------</span>
+                <br/>
+                <br/>
+                <span>Date --- </span>{dat.view()}
             </React.Fragment>
         );
     }
