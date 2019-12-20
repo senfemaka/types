@@ -2,13 +2,13 @@ import React from 'react';
 import { observable } from 'mobx';
 
 class date {
-    @observable _value;
+    @observable _value = new Date();
 
     get value() {
         return this._value;
     }
 
-    set value(newValue = new Date()) {
+    set value(newValue) {
         if (newValue instanceof Date) {
             return this._value = newValue;
         }
@@ -16,7 +16,7 @@ class date {
     }
 
     view() {
-        return <span>{this._value || 'date is not provided'}</span> // or datePicker
+        return <span>{this._value ? this._value.toString() : 'date is not provided'}</span> // or datePicker
     }
 }
 
